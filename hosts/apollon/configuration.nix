@@ -34,4 +34,8 @@ in
     git
   ];
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ];
+  };
 }
