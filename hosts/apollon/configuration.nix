@@ -32,6 +32,6 @@ in
   # install git
   environment.systemPackages = with pkgs; [
     git
-  ]
+  ];
 
 }
