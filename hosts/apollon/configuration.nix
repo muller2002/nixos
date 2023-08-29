@@ -27,6 +27,6 @@ in
 
 
   networking.hostName = "apollon";
-  networking.damain = "marlenawan.de";
+  networking.domain = "marlenawan.de";
 
 }
