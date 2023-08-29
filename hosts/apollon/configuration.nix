@@ -1,6 +1,6 @@
 { pkgs, nixpkgs, ... }:
 let
-  ssh-keys = builtins.readFile ./../../ssh-keys;
+  ssh-keys = builtins.readFile ./../../macbookkey.pub;
 in
 {
   imports = [
