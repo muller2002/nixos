@@ -29,4 +29,9 @@ in
   networking.hostName = "apollon";
   networking.domain = "marlenawan.de";
 
+  # install git
+  environment.systemPackages = with pkgs; [
+    git
+  ]
+
 }
