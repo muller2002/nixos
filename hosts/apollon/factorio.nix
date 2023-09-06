@@ -1,5 +1,5 @@
 {
-  
+
   containers.factorio-main = {
     autoStart = true;
     forwardPorts = [ 
@@ -9,7 +9,10 @@
         protocol = "udp";
       }
     ];
-    config = { config, pkgs, ... }: {
+    config = { config, pkgs, nixpkgs, ... }: {
+
+      nixpkgs.config.allowUnfree = true; # needed for factorio (is not free software)
+
       services.factorio = {
         enable = true;
         openFirewall = true;
