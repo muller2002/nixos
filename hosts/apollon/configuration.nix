@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./factorio.nix
     # (import "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
   ];
 
