@@ -9,6 +9,7 @@
     nixosConfigurations =
       let
         hosts = builtins.attrNames (nixpkgs.lib.filterAttrs (hostname: type: type == "directory") (builtins.readDir ./hosts));
+        forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
       in
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
@@ -18,5 +19,10 @@
           specialArgs = inputs;
         }
         );
+
+      devShell = forAllSystems (system: let pkgs = nixpkgs.legacyPackages.${system}; in pkgs.mkShell {
+        packages = [ pkgs.hello ];
+      });
+    
   };
 }
