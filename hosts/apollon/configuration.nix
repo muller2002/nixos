@@ -33,6 +33,9 @@ in
   # install git
   environment.systemPackages = with pkgs; [
     git
+    wget
+    curl
+    nano
   ];
 
   networking.firewall = {
