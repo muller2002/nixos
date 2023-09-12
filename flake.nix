@@ -6,11 +6,6 @@
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
-
-    # Used with `nixos-rebuild --flake .#fsmi-buzzer`
-    # Or: `nix build .#nixosConfigurations."fsmi-buzzer".config.system.build.toplevel`
-    # Or build the iso: `nix build .#nixosConfigurations."fsmi-buzzer".config.system.build.isoImage`
-    # nixosConfigurations."fsmi-buzzer".config.system.build.toplevel must be a derivation
     nixosConfigurations =
       let
         hosts = builtins.attrNames (nixpkgs.lib.filterAttrs (hostname: type: type == "directory") (builtins.readDir ./hosts));
