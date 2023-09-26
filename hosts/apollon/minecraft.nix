@@ -18,6 +18,10 @@
         openFirewall = true;
         eula = true;
         jvmOpts = "-Xms4092M -Xmx4092M -XX:+UseG1GC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=2 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10";
+        serverProperties = {
+          max-players = 30;
+          motd = "Minecraft server der GI Hochschulgruppe für die O-Woche 2023";
+        };
       };
       
       system.stateVersion = "23.05"; # did you read the comment?
