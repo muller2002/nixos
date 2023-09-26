@@ -22,6 +22,7 @@
           max-players = 30;
           motd = "Minecraft server der GI Hochschulgruppe für die O-Woche 2023";
         };
+        declarative = true;
       };
       
       system.stateVersion = "23.05"; # did you read the comment?
