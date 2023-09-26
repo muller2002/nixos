@@ -12,8 +12,8 @@
     config = { config, pkgs, nixpkgs, ... }: {
 
       nixpkgs.config.allowUnfree = true; # needed for factorio (is not free software)
-      services.minecraft = {
-        package = pkgs.minecraft-server_1_8_9;
+      services.minecraft-server = {
+        package = pkgs.minecraftServers.vanilla-1-8;
         enable = true;
         openFirewall = true;
         eula = true;
