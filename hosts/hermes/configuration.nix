@@ -12,9 +12,17 @@ in
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Deactivate EFI variables
+  boot.loader.efi.canTouchEfiVariables = false;
+
+  # Use the GRUB2 boot loader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.device = "nodev";
+
+  # Use latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # # Enable the OpenSSH daemon.
   services.openssh.enable = true;
