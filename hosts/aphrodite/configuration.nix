@@ -48,5 +48,8 @@ in
     allowedTCPPorts = [ 22 ];
   };
 
-  security.acme.acceptTerms = true;
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "acme_letsencrypt@marlena.app";
+  };
 }
