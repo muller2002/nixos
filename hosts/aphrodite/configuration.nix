@@ -47,4 +47,6 @@ in
     enable = true;
     allowedTCPPorts = [ 22 ];
   };
+
+  security.acme.acceptTerms = true;
 }
