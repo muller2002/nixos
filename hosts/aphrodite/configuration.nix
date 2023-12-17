@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    # (import "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+    ./uptime-kuma.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
