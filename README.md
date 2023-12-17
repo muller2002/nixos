@@ -3,6 +3,7 @@
 ## Aktuell administrierte Hosts
 
 - apollon.marlenawan.de
+- hermes.marlenawan.de
 
 ## Nützliche links
 
