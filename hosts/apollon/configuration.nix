@@ -7,7 +7,7 @@ in
     ./hardware-configuration.nix
     ./factorio.nix
     ./minecraft.nix
-    ../../modules/hugo-site/default.nix
+    ./modules/hugo-site/default.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
