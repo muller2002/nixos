@@ -7,7 +7,7 @@ in
     ./hardware-configuration.nix
     ./factorio.nix
     ./minecraft.nix
-    # (import "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+    ../../modules/hugo-site/default.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -44,4 +44,10 @@ in
     allowedTCPPorts = [ 22 25565 ];
     allowedUDPPorts = [ 34197 ];
   };
+
+  nixpkgs.overlays = [
+    (self: super: rec {
+      hugo-site = super.callPackage ./packages/hugo-site {};
+    })
+  ];
 }
