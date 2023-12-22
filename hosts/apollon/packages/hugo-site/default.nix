@@ -16,8 +16,9 @@ stdenv.mkDerivation rec {
   version = "0.1";
 
   src = builtins.fetchGit {
-    url = "https://github.com/muller2002/kuscheltiere-website";
+    url = "git@github.com:muller2002/kuscheltiere-website.git";
     ref = "main";
+    rev = "eeb0142f92b23ff76cfd87e472144adc594044c4";
   };
 
   nativeBuildInputs = [ pkgs.hugo ];
