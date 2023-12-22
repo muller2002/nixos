@@ -8,7 +8,7 @@ let
   hugoTheme = builtins.fetchTarball {
     name = "hugo-theme-gallery";
     url = "https://github.com/nicokaiser/hugo-theme-gallery/archive/22d9481d99ff773c6ca0977d9c1be85e752c059f.tar.gz";
-    sha256 = "c2b2cb42bd9c8adeb6a663f9f41474f590802d28fd08dbb5d61562b90575028c";
+    sha256 = "1kw14ar6a8z34m0xxvzbiy8rp1hb6kgsj10ixsxrijfwlcka92bg";
   };
 in
 stdenv.mkDerivation rec {
