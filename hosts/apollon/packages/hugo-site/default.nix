@@ -19,6 +19,7 @@ stdenv.mkDerivation rec {
     url = "git@github.com:muller2002/kuscheltiere-website.git";
     ref = "main";
     rev = "eeb0142f92b23ff76cfd87e472144adc594044c4";
+    submodules = true;
   };
 
   nativeBuildInputs = [ pkgs.hugo ];
@@ -26,8 +27,8 @@ stdenv.mkDerivation rec {
   themePath = "gallery";
   installPhase = ''
     mkdir -p theme/${themePath};
-    cp -r ${hugoTheme}/* theme/${themePath}/;
-    hugo -b ${baseURL} -t ${themePath} -d $out;
+#    cp -r ${hugoTheme}/* theme/${themePath}/;
+    hugo --gc --minify -d $out;
   '';
 
   meta = {

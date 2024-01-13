@@ -41,7 +41,7 @@ in
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 25565 ];
+    allowedTCPPorts = [ 22 80 443 25565 ];
     allowedUDPPorts = [ 34197 ];
   };
 
@@ -50,4 +50,9 @@ in
       hugo-site = super.callPackage ./packages/hugo-site {};
     })
   ];
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "acme_letsencrypt@marlena.app";
+  };
 }
