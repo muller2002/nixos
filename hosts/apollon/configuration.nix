@@ -10,7 +10,7 @@ in
     ./modules/hugo-site/default.nix
     "${builtins.fetchTarball {
       url = "https://github.com/ryantm/agenix/archive/417caa847f9383e111d1397039c9d4337d024bf0.tar.gz";
-      sha256 = "398b512ad85d539ad8a9af3854c846df4834af9da0f0415167b105003f5dc733"
+      sha256 = "398b512ad85d539ad8a9af3854c846df4834af9da0f0415167b105003f5dc733";
     }}/modules/age.nix"
   ];
 
