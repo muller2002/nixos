@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
   src = builtins.fetchGit {
     url = "git@github.com:muller2002/kuscheltiere-website.git";
     ref = "main";
-    rev = "93979d1bbf5163f0c5337a1c93a26fcce62f88ad";
+    rev = "3390ef030e929a97ea636a2ee95e6440453aa7e0";
     submodules = true;
   };
 
