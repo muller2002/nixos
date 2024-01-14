@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: 
+  outputs = inputs@{ self, nixpkgs, agenix, ... }: 
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {

@@ -37,6 +37,7 @@ in
     wget
     curl
     nano
+    agenix
   ];
 
   networking.firewall = {
