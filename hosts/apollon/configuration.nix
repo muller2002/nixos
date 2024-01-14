@@ -8,6 +8,7 @@ in
     ./factorio.nix
     ./minecraft.nix
     ./modules/hugo-site/default.nix
+    "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/modules/age.nix"
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -37,7 +38,6 @@ in
     wget
     curl
     nano
-    agenix
   ];
 
   networking.firewall = {
