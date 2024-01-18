@@ -17,7 +17,7 @@ in
 
   # Use the GRUB2 boot loader.
   boot.loader.grub.enable = true;
-  boot.loader.generic-extlinux-compatible.enable = true;
+  #boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
 
   # Use latest kernel
