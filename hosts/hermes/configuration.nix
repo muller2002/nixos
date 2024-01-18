@@ -24,8 +24,10 @@ in
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    tailscale.enable = true;
+  };
 
   users.users.root.openssh.authorizedKeys.keyFiles = [
     (pkgs.writeText "root-ssh-key" ssh-keys)
