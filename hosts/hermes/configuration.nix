@@ -17,9 +17,7 @@ in
 
   # Use the GRUB2 boot loader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/vda3";
+  boot.loader.generic-extlinux-compatible.enable = true;
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
