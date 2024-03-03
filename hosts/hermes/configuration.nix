@@ -10,22 +10,19 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
-  # Deactivate EFI variables
-  boot.loader.efi.canTouchEfiVariables = false;
+  # NixOS wants to enable GRUB by default
+  boot.loader.grub.enable = false;
+  # Enables the generation of /boot/extlinux/extlinux.conf
+  boot.loader.generic-extlinux-compatible.enable = true;
 
-  # Use the GRUB2 boot loader.
-  boot.loader.grub.enable = true;
-  #boot.loader.generic-extlinux-compatible.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services = {
     openssh.enable = true;
-    tailscale.enable = true;
   };
 
   users.users.root.openssh.authorizedKeys.keyFiles = [
