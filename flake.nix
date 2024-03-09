@@ -8,8 +8,10 @@
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, agenix, ... }:
-   
   let
+    unstableOverlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
+    # Overlays-module makes "pkgs.unstable" available in configuration.nix
+    unstableModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ unstableOverlay ]; });
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
     nixosConfigurations =
@@ -29,8 +31,5 @@
     devShell = forAllSystems (system: let pkgs = nixpkgs.legacyPackages.${system}; in pkgs.mkShell {
       packages = [ pkgs.hello ];
     });
-    unstableOverlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
-    # Overlays-module makes "pkgs.unstable" available in configuration.nix
-    unstableModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ unstableOverlay ]; });
   };
 }
