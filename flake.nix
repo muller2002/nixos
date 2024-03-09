@@ -26,7 +26,7 @@
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
           modules = [ 
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (final: prev: overlay-unstable) ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
