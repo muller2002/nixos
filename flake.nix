@@ -7,7 +7,8 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, ... }: 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, ... }:
+   
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
@@ -29,5 +30,17 @@
       packages = [ pkgs.hello ];
     });
     
+    overlays = {
+      # Inject 'unstable' and 'trunk' into the overridden package set, so that
+      # the following overlays may access them (along with any system configs
+      # that wish to do so).
+      pkg-sets = (
+        final: prev: {
+          unstable = import inputs.unstable { system = final.system; };
+          trunk = import inputs.trunk { system = final.system; };
+        }
+      );
+    # Remaining attributes elided.
+    };
   };
 }
