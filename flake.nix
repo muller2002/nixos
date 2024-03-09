@@ -22,6 +22,7 @@
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
           modules = [
+            unstableModule
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
