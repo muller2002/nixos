@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
 
   containers.factorio-main = {
@@ -9,25 +10,10 @@
         protocol = "udp";
       }
     ];
-    
+    nixpkgs = inputs.nixpkgs-unstable.outPath;
     config = { config, pkgs, nixpkgs, ... }: 
-    let
-      # add unstable channel declaratively
-      unstableTarball =
-        fetchTarball {
-          url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-          sha256 = "0mhh8wyfcncg1sjkpdy72afhi964h5i70vampc60pslaqd1s06pa";
-        };
-        system = builtins.currentSystem; 
-    in
     {
-      nixpkgs.config = {
-        packageOverrides = pkgs: {
-          unstable = import unstableTarball {
-            config = config.nixpkgs.config;
-          };
-        };
-      };
+    
 
       nixpkgs.config.allowUnfree = true; # needed for factorio (is not free software)
 

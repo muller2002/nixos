@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
   };
 
@@ -21,6 +22,7 @@
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
+          specialArgs.inputs = inputs;
         }
         );
 
