@@ -3,13 +3,22 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
-    unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, agenix, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        # use this variant if unfree packages are needed:
+        # unstable = import nixpkgs-unstable {
+        #   inherit system;
+        #   config.allowUnfree = true;
+        # };
+
+    };
   in {
     nixosConfigurations =
       let
@@ -19,19 +28,7 @@
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
           modules = [ 
-            ({ config, pkgs, ... }: 
-              let
-                overlay-unstable = final: prev: {
-                  unstable = unstable.legacyPackages.x86_64-linux;
-                };
-              in
-                {
-                  nixpkgs.overlays = [ overlay-unstable ]; 
-                  environment.systemPackages = with pkgs; [
-                    unstable.factorio-headless
-                  ];
-                }
-            )
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
