@@ -16,7 +16,7 @@
       unstableTarball =
         fetchTarball {
           url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-          sha256 = "28d3cba45864177edd25d0231e57c486ab9d9b5e83d650536692d35020739e59";
+          sha256 = "0mhh8wyfcncg1sjkpdy72afhi964h5i70vampc60pslaqd1s06pa";
         }; 
     in
     {
