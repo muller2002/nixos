@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, nixpkgs-unstable, ... }:
+{ pkgs, nixpkgs, ... }:
 let
   ssh-keys = builtins.readFile ./../../macbookkey.pub;
 in
@@ -50,7 +50,7 @@ in
     allowedUDPPorts = [ 34197 ];
   };
 
-  nixpkgs.overlays = [
+  nixpkgs.overlays += [
     (self: super: rec {
       hugo-site = super.callPackage ./packages/hugo-site {};
     })
