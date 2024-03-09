@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, ... }:
+{ pkgs, nixpkgs, unstable, ... }:
 let
   ssh-keys = builtins.readFile ./../../macbookkey.pub;
 in
