@@ -9,9 +9,6 @@
 
   outputs = inputs@{ self, nixpkgs, unstable, agenix, ... }:
   let
-    unstableOverlay = final: prev: { unstable = unstable.legacyPackages.${prev.system}; };
-    # Overlays-module makes "pkgs.unstable" available in configuration.nix
-    unstableModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ unstableOverlay ]; });
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
     nixosConfigurations =
@@ -21,8 +18,20 @@
       in
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
-          modules = [
-            unstableModule
+          modules = [ 
+            ({ config, pkgs, ... }: 
+              let
+                overlay-unstable = final: prev: {
+                  unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+                };
+              in
+                {
+                  nixpkgs.overlays = [ overlay-unstable ]; 
+                  environment.systemPackages = with pkgs; [
+                    unstable.qutebrowser
+                  ];
+                }
+            )
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
