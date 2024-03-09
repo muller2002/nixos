@@ -9,7 +9,7 @@
         protocol = "udp";
       }
     ];
-    config = { config, pkgs, nixpkgs, unstable, ... }: {
+    config = { config, pkgs, nixpkgs, nixpkgs-unstable, ... }: {
 
       nixpkgs.config.allowUnfree = true; # needed for factorio (is not free software)
 
