@@ -28,7 +28,7 @@
                 {
                   nixpkgs.overlays = [ overlay-unstable ]; 
                   environment.systemPackages = with pkgs; [
-                    unstable.qutebrowser
+                    unstable.factorio-headless
                   ];
                 }
             )
