@@ -22,7 +22,6 @@
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
-          specialArgs.inputs = inputs;
         }
         );
 
