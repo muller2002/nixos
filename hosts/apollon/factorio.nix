@@ -19,7 +19,7 @@
         game-name = "GI Hochschulgruppe Paderborn";
         description = "Factorio server der GI Hochschulgruppe Paderborn, du möchtest mitspielen? melde dich bei uns (https://hg-paderborn.gi.de/kontakt/)";
         game-password = builtins.readFile ./factorio-main-password;
-        package = nixpkgs-unstable.factorio-headless;
+        package = pkgs.unstable.factorio-headless;
       };
       system.stateVersion = "23.05"; # did you read the comment?
     };
