@@ -7,7 +7,7 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, agenix, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     overlay-unstable = final: prev: {
