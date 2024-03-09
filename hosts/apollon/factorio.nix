@@ -14,8 +14,10 @@
     let
       # add unstable channel declaratively
       unstableTarball =
-        fetchTarball
-          https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+        fetchTarball {
+          url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+          sha256 = "1";
+        }; 
     in
     {
       nixpkgs.config = {
