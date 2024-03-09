@@ -41,7 +41,6 @@ in
     wget
     curl
     nano
-    unstable.factorio-headless
   ];
 
   networking.firewall = {

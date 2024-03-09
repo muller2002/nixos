@@ -3,20 +3,12 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, ... }:
+  outputs = inputs@{ self, nixpkgs, agenix, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-    system = "x86_64-linux";
-    overlay-unstable = final: prev: {
-        unstable = import nixpkgs-unstable {
-           inherit system;
-           config.allowUnfree = true;
-         };
-    };
   in {
     nixosConfigurations =
       let
@@ -26,7 +18,6 @@
       nixpkgs.lib.genAttrs hosts
         (hostname: nixpkgs.lib.nixosSystem {
           modules = [ 
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/${hostname}/configuration.nix
           ];
           specialArgs = inputs;
