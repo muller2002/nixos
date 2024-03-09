@@ -10,6 +10,7 @@
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, agenix, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    system = "x86_64-linux";
     overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
            inherit system;
